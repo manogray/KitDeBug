@@ -1,14 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-07-27T08:47:43
+# Project created by QtCreator 2019-07-29T10:07:15
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Kit_Bug_Hackers
+TARGET = KitDeBug
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
