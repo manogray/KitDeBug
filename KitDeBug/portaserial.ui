@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>portaSerial</class>
+ <widget class="QDialog" name="portaSerial">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>703</width>
+    <height>399</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Porta Serial</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../Imagens/bug.png</normaloff>../../../Imagens/bug.png</iconset>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>170</y>
+     <width>291</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="contentPrincipal_2">
+    <item row="0" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="contentOpcoes_2">
+      <item>
+       <layout class="QGridLayout" name="contentPorta_2">
+        <item row="1" column="0">
+         <widget class="QComboBox" name="comboBox_porta_2"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_porta_2">
+          <property name="styleSheet">
+           <string notr="true">font-size: 12pt;</string>
+          </property>
+          <property name="text">
+           <string>Porta</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="contentBanda_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_banda_2">
+          <property name="styleSheet">
+           <string notr="true">font-size: 12pt;</string>
+          </property>
+          <property name="text">
+           <string>Baud Rate</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QComboBox" name="comboBox_banda_2"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>60</y>
+     <width>271</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="contentPrincipal_3">
+    <item row="0" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="contentOpcoes_3">
+      <item>
+       <layout class="QGridLayout" name="contentPorta_3">
+        <item row="1" column="0">
+         <widget class="QComboBox" name="comboBox_porta_3"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_porta_3">
+          <property name="styleSheet">
+           <string notr="true">font-size: 12pt;</string>
+          </property>
+          <property name="text">
+           <string>Porta</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="contentBanda_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_banda_3">
+          <property name="styleSheet">
+           <string notr="true">font-size: 12pt;</string>
+          </property>
+          <property name="text">
+           <string>Baud Rate</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QComboBox" name="comboBox_banda_3"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>170</y>
+     <width>271</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="contentPrincipal_4">
+    <item row="0" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="contentOpcoes_4">
+      <item>
+       <layout class="QGridLayout" name="contentPorta_4">
+        <item row="1" column="0">
+         <widget class="QComboBox" name="comboBox_porta_4"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_porta_4">
+          <property name="styleSheet">
+           <string notr="true">font-size: 12pt;</string>
+          </property>
+          <property name="text">
+           <string>Porta</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="contentBanda_4">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_banda_4">
+          <property name="styleSheet">
+           <string notr="true">font-size: 12pt;</string>
+          </property>
+          <property name="text">
+           <string>Baud Rate</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QComboBox" name="comboBox_banda_4"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>20</y>
+     <width>311</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Você pode conectar até 4 circuitos ao mesmo tempo!</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>291</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="contentPrincipal_1">
+    <item row="0" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="contentOpcoes">
+      <item>
+       <layout class="QGridLayout" name="contentPorta">
+        <item row="1" column="0">
+         <widget class="QComboBox" name="comboBox_porta_1"/>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_porta">
+          <property name="styleSheet">
+           <string notr="true">font-size: 12pt;</string>
+          </property>
+          <property name="text">
+           <string>Porta</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="contentBanda">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_banda">
+          <property name="styleSheet">
+           <string notr="true">font-size: 12pt;</string>
+          </property>
+          <property name="text">
+           <string>Baud Rate</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QComboBox" name="comboBox_banda_1"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QPushButton" name="pushButton_conecta">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>330</y>
+     <width>269</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 12pt;
+background: #00969b;
+color: #f5f5f5;</string>
+   </property>
+   <property name="text">
+    <string>Conectar</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
