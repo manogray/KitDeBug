@@ -35,6 +35,7 @@ public:
     QGridLayout *contentBanda_2;
     QLabel *label_banda_2;
     QComboBox *comboBox_banda_2;
+    QComboBox *equip2;
     QWidget *layoutWidget_2;
     QFormLayout *contentPrincipal_3;
     QHBoxLayout *contentOpcoes_3;
@@ -44,6 +45,7 @@ public:
     QGridLayout *contentBanda_3;
     QLabel *label_banda_3;
     QComboBox *comboBox_banda_3;
+    QComboBox *equip3;
     QWidget *layoutWidget_3;
     QFormLayout *contentPrincipal_4;
     QHBoxLayout *contentOpcoes_4;
@@ -53,6 +55,7 @@ public:
     QGridLayout *contentBanda_4;
     QLabel *label_banda_4;
     QComboBox *comboBox_banda_4;
+    QComboBox *equip4;
     QLabel *label;
     QWidget *layoutWidget1;
     QFormLayout *contentPrincipal_1;
@@ -63,6 +66,7 @@ public:
     QGridLayout *contentBanda;
     QLabel *label_banda;
     QComboBox *comboBox_banda_1;
+    QComboBox *equip1;
     QPushButton *pushButton_conecta;
 
     void setupUi(QDialog *portaSerial)
@@ -75,7 +79,7 @@ public:
         portaSerial->setWindowIcon(icon);
         layoutWidget = new QWidget(portaSerial);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 170, 291, 71));
+        layoutWidget->setGeometry(QRect(10, 170, 291, 91));
         contentPrincipal_2 = new QFormLayout(layoutWidget);
         contentPrincipal_2->setObjectName(QString::fromUtf8("contentPrincipal_2"));
         contentPrincipal_2->setContentsMargins(0, 0, 0, 0);
@@ -116,9 +120,14 @@ public:
 
         contentPrincipal_2->setLayout(0, QFormLayout::SpanningRole, contentOpcoes_2);
 
+        equip2 = new QComboBox(layoutWidget);
+        equip2->setObjectName(QString::fromUtf8("equip2"));
+
+        contentPrincipal_2->setWidget(1, QFormLayout::SpanningRole, equip2);
+
         layoutWidget_2 = new QWidget(portaSerial);
         layoutWidget_2->setObjectName(QString::fromUtf8("layoutWidget_2"));
-        layoutWidget_2->setGeometry(QRect(370, 60, 271, 71));
+        layoutWidget_2->setGeometry(QRect(370, 60, 271, 91));
         contentPrincipal_3 = new QFormLayout(layoutWidget_2);
         contentPrincipal_3->setObjectName(QString::fromUtf8("contentPrincipal_3"));
         contentPrincipal_3->setContentsMargins(0, 0, 0, 0);
@@ -159,9 +168,14 @@ public:
 
         contentPrincipal_3->setLayout(0, QFormLayout::SpanningRole, contentOpcoes_3);
 
+        equip3 = new QComboBox(layoutWidget_2);
+        equip3->setObjectName(QString::fromUtf8("equip3"));
+
+        contentPrincipal_3->setWidget(1, QFormLayout::SpanningRole, equip3);
+
         layoutWidget_3 = new QWidget(portaSerial);
         layoutWidget_3->setObjectName(QString::fromUtf8("layoutWidget_3"));
-        layoutWidget_3->setGeometry(QRect(370, 170, 271, 71));
+        layoutWidget_3->setGeometry(QRect(370, 170, 271, 91));
         contentPrincipal_4 = new QFormLayout(layoutWidget_3);
         contentPrincipal_4->setObjectName(QString::fromUtf8("contentPrincipal_4"));
         contentPrincipal_4->setContentsMargins(0, 0, 0, 0);
@@ -202,12 +216,17 @@ public:
 
         contentPrincipal_4->setLayout(0, QFormLayout::SpanningRole, contentOpcoes_4);
 
+        equip4 = new QComboBox(layoutWidget_3);
+        equip4->setObjectName(QString::fromUtf8("equip4"));
+
+        contentPrincipal_4->setWidget(1, QFormLayout::SpanningRole, equip4);
+
         label = new QLabel(portaSerial);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(190, 20, 311, 17));
         layoutWidget1 = new QWidget(portaSerial);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(10, 60, 291, 71));
+        layoutWidget1->setGeometry(QRect(10, 60, 291, 91));
         contentPrincipal_1 = new QFormLayout(layoutWidget1);
         contentPrincipal_1->setObjectName(QString::fromUtf8("contentPrincipal_1"));
         contentPrincipal_1->setContentsMargins(0, 0, 0, 0);
@@ -247,6 +266,11 @@ public:
 
 
         contentPrincipal_1->setLayout(0, QFormLayout::SpanningRole, contentOpcoes);
+
+        equip1 = new QComboBox(layoutWidget1);
+        equip1->setObjectName(QString::fromUtf8("equip1"));
+
+        contentPrincipal_1->setWidget(1, QFormLayout::SpanningRole, equip1);
 
         pushButton_conecta = new QPushButton(portaSerial);
         pushButton_conecta->setObjectName(QString::fromUtf8("pushButton_conecta"));

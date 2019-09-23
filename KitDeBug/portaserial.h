@@ -16,6 +16,7 @@ public:
     explicit portaSerial(QWidget *parent = nullptr);
     QList<QString> getNomePorta();
     QList<int> getValorBanda();
+    QList<QString> equipamentos;
     ~portaSerial();
 
 public slots:

@@ -1,23 +1,27 @@
 
-char comando;
+char circuito;
 int leitura;
 
 void setup(){
   Serial.begin(9600);
-  Serial.print("o");
 }
 
 void loop(){
   
   if(Serial.available() > 0){
-    comando = Serial.read();
+    circuito = Serial.read();
   }
       
-  if(comando == 'r'){
+  if(circuito == 'v'){
     leitura = analogRead(A0);
     Serial.println(leitura);
   }
   
-  delay(500);
+  if(circuito == 'a'){
+    leitura = analogRead(A1);
+    Serial.println(leitura);
+  }
+  
+  delay(300);
   
 }

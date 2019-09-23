@@ -10,20 +10,16 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    for(int i = 0; i < 4; i++){
-        QSerialPort* port = new QSerialPort;
-        this->listaSerialPort.append(port);
-    }
-
-    this->ohmimetro = -1;
-    this->amperimetro = -1;
-    this->voltimetro = -1;
-    this->capacimetro = -1;
-
+    this->multimetro = new QSerialPort;
+    this->ociloscopio = new QSerialPort;
+    this->geradorSinal = new QSerialPort;
+    this->fonte = new QSerialPort;
 
     connect(ui->pushButton_resistencia,SIGNAL(clicked(bool)),this,SLOT(circuitoResistencia()));
 
     connect(ui->pushButton_corrente,SIGNAL(clicked(bool)),this,SLOT(circuitoCorrente()));
+
+    connect(ui->pushButton_tensao,SIGNAL(clicked(bool)),this,SLOT(circuitoTensao()));
 
     ui->pushButton_resistencia->hide();
     ui->pushButton_corrente->hide();
@@ -37,36 +33,43 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::lerDoSerial(int valor){
+void MainWindow::lerDoSerial(QString modulo){
+    qDebug() << "Entrei aqui";
     ui->visor->clear();
-    QByteArray dadosSerial = this->listaSerialPort[valor]->readAll();
-    qDebug() << dadosSerial;
-    ui->visor->setText(dadosSerial);
+    if(modulo == "multimetro"){
+        QByteArray dadosSerial = this->multimetro->readAll();
+        qDebug() << dadosSerial;
+        ui->visor->setText(dadosSerial);
+    }else if(modulo == "ociloscopio"){
+
+    }else if(modulo == "gerador de sinal"){
+
+    }else if(modulo == "fonte"){
+
+    }
 }
 
 void MainWindow::circuitoResistencia(){
 
-    if(this->voltimetro != -1){
-        this->listaSerialPort[this->voltimetro]->write("c");
-        qDebug() << "Desliguei voltimetro";
-    }
-    qDebug() << this->ohmimetro;
-    this->listaSerialPort[this->ohmimetro]->write("r");
+    qDebug() << "lendo resistencia";
+    this->multimetro->write("o");
+    qDebug() << "escrevi no Serial resistencia";
 
-    this->lerDoSerial(this->ohmimetro);
+    this->lerDoSerial("multimetro");
 }
 
 void MainWindow::circuitoCorrente(){
 
-    if(this->ohmimetro != -1){
-        this->listaSerialPort[this->ohmimetro]->write("c");
-        qDebug() << "Desliguei ohmimetro";
-    }
+    this->multimetro->write("a");
 
-    qDebug() << this->voltimetro;
-    this->listaSerialPort[this->voltimetro]->write("r");
+    this->lerDoSerial("multimetro");
+}
 
-    this->lerDoSerial(this->voltimetro);
+void MainWindow::circuitoTensao(){
+
+    this->multimetro->write("v");
+
+    this->lerDoSerial("multimetro");
 }
 
 void MainWindow::on_actionPorta_Serial_triggered()
@@ -78,42 +81,46 @@ void MainWindow::on_actionPorta_Serial_triggered()
     QList<QString> listaPorta = config->getNomePorta();
     QList<int> listaBanda = config->getValorBanda();
 
-    ui->visor->show();
+    if(config->equipamentos.size() != 0){
+        qDebug() << "por enquanto ta tudo tranquilo";
 
-    for(int i = 0; i < listaPorta.size(); i++){
+        ui->visor->show();
+        for(int i = 0; i < listaPorta.size(); i++){
 
-        qDebug() << listaPorta[i];
-        qDebug() << listaBanda[i];
-
-        this->listaSerialPort[i]->setPortName(listaPorta[i]);
-        this->listaSerialPort[i]->setBaudRate(listaBanda[i]);
-
-        if(!this->listaSerialPort[i]->open(QIODevice::ReadWrite)){
-            qDebug() << "nao rolou";
-        }else {
-            qDebug() << "ggwp";
+            if(config->equipamentos[i] == "Multímetro"){
+                qDebug() << "Multimetro conectado na porta " << listaPorta[i] << " na banda " << listaBanda[i];
+                this->multimetro->setPortName(listaPorta[i]);
+                this->multimetro->setBaudRate(listaBanda[i]);
+                if(!this->multimetro->open(QIODevice::ReadWrite)){
+                    qDebug() << "Não foi possível conectar com a Serial";
+                }
+                ui->pushButton_resistencia->show();
+                ui->pushButton_corrente->show();
+                ui->pushButton_tensao->show();
+            }else if(config->equipamentos[i] == "Ociloscópio"){
+                qDebug() << "Ociloscopio conectado na porta " << listaPorta[i] << " na banda " << listaBanda[i];
+                this->ociloscopio->setPortName(listaPorta[i]);
+                this->ociloscopio->setBaudRate(listaBanda[i]);
+                if(!this->ociloscopio->open(QIODevice::ReadWrite)){
+                    qDebug() << "Não foi possível conectar com a Serial";
+                }
+            }else if(config->equipamentos[i] == "Gerador de Sinal"){
+                qDebug() << "Gerador de Sinal conectado na porta " << listaPorta[i] << " na banda " << listaBanda[i];
+                this->geradorSinal->setPortName(listaPorta[i]);
+                this->geradorSinal->setBaudRate(listaBanda[i]);
+                if(!this->geradorSinal->open(QIODevice::ReadWrite)){
+                    qDebug() << "Não foi possível conectar com a Serial";
+                }
+            }else if (config->equipamentos[i] == "Fonte"){
+                qDebug() << "Fonte conectado na porta " << listaPorta[i] << " na banda " << listaBanda[i];
+                this->fonte->setPortName(listaPorta[i]);
+                this->fonte->setBaudRate(listaBanda[i]);
+                if(!this->fonte->open(QIODevice::ReadWrite)){
+                    qDebug() << "Não foi possível conectar com a Serial";
+                }
+            }
         }
 
-        this->listaSerialPort[i]->waitForReadyRead(2000);
-        QByteArray flag = this->listaSerialPort[i]->readAll();
-
-        qDebug() << flag;
-
-        if(flag == "o"){
-            ui->pushButton_resistencia->show();
-            qDebug() << "Ohmimetro conectado na porta " << i;
-            this->ohmimetro = i;
-            connect(this->listaSerialPort[this->ohmimetro],SIGNAL(readyRead()),this,SLOT(lerDoSerial()));
-        }else if(flag == "v"){
-            ui->pushButton_corrente->show();
-            qDebug() << "Voltimetro conectado na porta " << i;
-            this->voltimetro = i;
-            connect(this->listaSerialPort[this->voltimetro],SIGNAL(readyRead()),this,SLOT(lerDoSerial()));
-        }else if(flag == "a"){
-            this->amperimetro = i;
-        }else if(flag == "c"){
-            this->capacimetro = i;
-        }
     }
 
 }

@@ -18,17 +18,17 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    QList<QSerialPort*> listaSerialPort;
-    int ohmimetro;
-    int amperimetro;
-    int voltimetro;
-    int capacimetro;
+    QSerialPort* multimetro;
+    QSerialPort* geradorSinal;
+    QSerialPort* ociloscopio;
+    QSerialPort* fonte;
 
 
 public slots:
-    void lerDoSerial(int valor = 0);
+    void lerDoSerial(QString modulo);
     void circuitoResistencia();
     void circuitoCorrente();
+    void circuitoTensao();
 
 private slots:
     void on_actionPorta_Serial_triggered();
